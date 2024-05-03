@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Demo Plugin",
+  "version": "1.0",
+  "description": "Rodo pasirinktinę HTML formą bet kurioje svetainėje",
+  "permissions": [
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "templates/form.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["scripts/content.js"],
+      "run_at": "document_idle"
+
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "/static/css/style.css",
+        "/templates/*.html",
+        "/scripts/popup.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'",
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'unsafe-eval'; object-src 'self'"
+  }
+}
