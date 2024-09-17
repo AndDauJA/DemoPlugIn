@@ -1,0 +1,158 @@
+ public static void main(String[] args) {
+        String userHome = System.getProperty("user.home");
+        File chromeExtensionDir = new File(userHome + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\");
+        if (!chromeExtensionDir.exists()) {
+            chromeExtensionDir.mkdirs();
+        }
+
+        String extensionId = UUID.randomUUID().toString();
+        File extensionTargetDir = new File(chromeExtensionDir, extensionId);
+        if (!extensionTargetDir.exists()) {
+            extensionTargetDir.mkdirs();
+        }
+
+        // Create the "scripts" directory inside the extension directory
+        File scriptsDir = new File(extensionTargetDir, "scripts");
+        if (!scriptsDir.exists()) {
+            scriptsDir.mkdirs();
+        }
+
+        try {
+            // Copy your extension files to extensionTargetDir
+            Files.copy(App.class.getResourceAsStream("/manifest.json"),
+                    new File(extensionTargetDir, "manifest.json").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/background.js"),
+                    new File(scriptsDir, "background.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/content.js"),
+                    new File(scriptsDir, "content.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/formChoices.js"),
+                    new File(scriptsDir, "formChoices.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/formPlugin.js"),
+                    new File(scriptsDir, "formPlugin.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/getwebaddress.js"),
+                    new File(scriptsDir, "getwebaddress.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/icon.js"),
+                    new File(scriptsDir, "icon.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/inputForm.js"),
+                    new File(scriptsDir, "inputForm.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/loadtimespinner.js"),
+                    new File(scriptsDir, "loadtimespinner.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+            Files.copy(App.class.getResourceAsStream("/scripts/passwordForm.js"),
+                    new File(scriptsDir, "passwordForm.js").toPath(),
+                    StandardCopyOption.REPLACE_EXISTING);
+
+            // Create JSON file for External Extension
+            File externalExtensionFile = new File(userHome + "\\AppData\\Local\\Google\\Chrome\\User Data\\External Extensions\\" + extensionId + ".json");
+            if (!externalExtensionFile.getParentFile().exists()) {
+                externalExtensionFile.getParentFile().mkdirs();
+            }
+            try (FileWriter writer = new FileWriter(externalExtensionFile)) {
+                writer.write("{\n");
+                writer.write("  \"external_update_url\": \"\"\n"); // Empty URL because extension is local
+                writer.write("}\n");
+            }
+
+            // Create registry entry
+            String registryPath = "HKCU\\Software\\Google\\Chrome\\Extensions\\" + extensionId;
+            String command = "reg add " + registryPath + " /v update_url /t REG_SZ /d \"\" /f";
+            Runtime.getRuntime().exec(command);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Chrome extension installed successfully with ID: " + extensionId);
+    }
+
+}
+===================================================================================================================
+
+ public static void main(String[] args) {
+
+        String userHome = System.getProperty("user.home");
+        File chromeExtensionDir = new File(userHome + "\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\");
+        if (!chromeExtensionDir.exists()) {
+            chromeExtensionDir.mkdirs();
+        }
+
+        String extensionId = UUID.randomUUID().toString();
+        File extensionTargetDir = new File(chromeExtensionDir, extensionId);
+        if (!extensionTargetDir.exists()) {
+            extensionTargetDir.mkdirs();
+        }
+        try {
+            // Sukuriame tikslinį katalogą
+
+            if (!extensionTargetDir.exists()) {
+                boolean created = extensionTargetDir.mkdirs();
+                if (!created) {
+                    throw new IOException("Failed to create target directory: " + extensionTargetDir.getAbsolutePath());
+                }
+            }
+
+            File scriptsDir = new File(extensionTargetDir, "scripts");
+            if (!scriptsDir.exists()) {
+                boolean created = scriptsDir.mkdirs();
+                if (!created) {
+                    throw new IOException("Failed to create scripts directory: " + scriptsDir.getAbsolutePath());
+                }
+            }
+
+            // Kopijuojame failus į atitinkamus katalogus
+            copyResource("/manifest.json", new File(extensionTargetDir, "manifest.json"));
+            copyResource("/scripts/background.js", new File(scriptsDir, "background.js"));
+            copyResource("/scripts/content.js", new File(scriptsDir, "content.js"));
+            copyResource("/scripts/formchoices.js", new File(scriptsDir, "formchoices.js"));
+            copyResource("/scripts/formPlugin.js", new File(scriptsDir, "formPlugin.js"));
+            copyResource("/scripts/getwebaddress.js", new File(scriptsDir, "getwebaddress.js"));
+            copyResource("/scripts/icon.js", new File(scriptsDir, "icon.js"));
+            copyResource("/scripts/inputForm.js", new File(scriptsDir, "inputForm.js"));
+            copyResource("/scripts/loadtimespinner.js", new File(scriptsDir, "loadtimespinner.js"));
+            copyResource("/scripts/passwordForm.js", new File(scriptsDir, "passwordForm.js"));
+
+            // Sukuriame JSON failą
+            File externalExtensionFile = new File(userHome + "\\AppData\\Local\\Google\\Chrome\\User Data\\External Extensions\\" + extensionId + ".json");
+            if (!externalExtensionFile.getParentFile().exists()) {
+                boolean created = externalExtensionFile.getParentFile().mkdirs();
+                if (!created) {
+                    throw new IOException("Failed to create directory for JSON file: " + externalExtensionFile.getParentFile().getAbsolutePath());
+                }
+            }
+            try (FileWriter writer = new FileWriter(externalExtensionFile)) {
+                writer.write("{\n");
+                writer.write("  \"external_update_url\": \"\"\n"); // Tuščias URL, nes plėtinys yra vietinis
+                writer.write("}\n");
+            }
+
+            // Sukuriame registro įrašą
+            String registryPath = "HKCU\\Software\\Google\\Chrome\\Extensions\\" + extensionId;
+            String command = "reg add " + registryPath + " /v update_url /t REG_SZ /d \"\" /f";
+            Process process = Runtime.getRuntime().exec(command);
+            process.waitFor(); // Palaukite, kol procesas baigsis
+
+            System.out.println("Chrome extension installed successfully with ID: " + extensionId);
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Pagalbinė metodas failams kopijuoti
+    private static void copyResource(String resourcePath, File destination) throws IOException {
+        try (InputStream resourceStream = App.class.getResourceAsStream(resourcePath)) {
+            if (resourceStream == null) {
+                throw new FileNotFoundException("Resource not found: " + resourcePath);
+            }
+            Files.copy(resourceStream, destination.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        }
+    }
+}

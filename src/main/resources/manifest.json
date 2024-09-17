@@ -1,34 +1,76 @@
 {
   "manifest_version": 3,
-  "name": "Demo Plugin",
-  "version": "1.0",
-  "description": "Rodo pasirinktinę HTML formą bet kurioje svetainėje",
+  "name": "Password Manager PlugIn",
+  "version": "1.0.5",
+  "description": "Gives possibility to save and change passwords",
   "permissions": [
-    "activeTab"
-  ],
-  "action": {
-    "default_popup": "templates/form.html"
+    "alarms",
+    "notifications",
+    "activeTab",
+    "tabs",
+    "storage",
+    "scripting",
+    "downloads"
+      ],
+  "background": {
+    "service_worker": "scripts/background.js"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["scripts/content.js"],
-      "run_at": "document_idle"
-
-    }
-  ],
   "web_accessible_resources": [
     {
       "resources": [
-        "/static/css/style.css",
-        "/templates/*.html",
-        "/scripts/popup.js"
+        "static/css/style.css",
+        "static/css/pluginform.css",
+        "static/css/inputIcon.css",
+        "static/css/choiceform.css",
+        "/static/images/logo.jpg",
+        "static/images/icon16.png",
+        "static/images/icon48.png",
+        "static/images/icon128.png",
+        "templates/brigama/*.html",
+        "fragments/*.html",
+        "welcome/*.html",
+        "extension_id.txt"
       ],
-      "matches": ["<all_urls>"]
+      "matches": [
+        "<all_urls>"
+      ]
     }
   ],
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self'",
-    "sandbox": "sandbox allow-scripts; script-src 'self' 'unsafe-eval'; object-src 'self'"
-  }
+    "extension_pages": "script-src 'self'; object-src 'self';"
+
+  },
+  "action": {
+    "default_popup": "templates/brigama/pluginlogin.html",
+    "default_icon": {
+      "16": "static/images/icon16.png",
+      "48": "static/images/icon48.png",
+      "128": "static/images/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "static/images/icon16.png",
+    "48": "static/images/icon48.png",
+    "128": "static/images/icon128.png",
+    "64": "static/images/logo.jpg"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "scripts/content.js",
+        "scripts/fetchlockalhost.js"
+      ]
+    }
+  ],
+  "file_browser_handlers": [{
+    "id": "open",
+    "default_title": "Open with My Extension",
+    "file_filters": [
+      "filesystem:*"
+    ]
+  }]
 }
+

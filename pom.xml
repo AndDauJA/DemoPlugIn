@@ -20,7 +20,11 @@
   </properties>
 
   <dependencies>
-
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-chrome-driver</artifactId>
+      <version>4.20.0</version> <!-- Naudokite naujausią versiją -->
+    </dependency>
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
@@ -114,7 +118,6 @@
     </dependency>
 
 
-
   </dependencies>
   <build>
     <plugins>
@@ -130,7 +133,7 @@
           </execution>
         </executions>
         <configuration>
-          <mainClass>lt.daujotas.KeyGeneratorApp</mainClass>
+          <mainClass>lt.daujotas.App</mainClass>
         </configuration>
       </plugin>
 

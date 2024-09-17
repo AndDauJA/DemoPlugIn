@@ -1,0 +1,134 @@
+
+table {
+
+    border-collapse: collapse;
+}
+
+.choice-table {
+
+    position: absolute;
+    color: black;
+    /*background-color: rgba(255, 255, 255);*/
+    background-color: #aaaaaa;
+    width: 400px;
+    height: 100px;
+    z-index: 9999;
+    padding: 8px;
+    border: 3px solid #ddd;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); /* Horizontalus postūmis, vertikalus postūmis, skersmens, išplėtimo ir šešėlio spalva */
+
+}
+
+.choice-form {
+    position: absolute;
+    color: black;
+    /*background-color: rgba(255, 255, 255);*/
+    background-color: #aaaaaa;
+    width: 400px;
+    height: 400px;
+    z-index: 9999;
+    padding: 8px;
+    border: 3px solid #ddd;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); /* Horizontalus postūmis, vertikalus postūmis, skersmens, išplėtimo ir šešėlio spalva */
+    border-radius: 15px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.input-form {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    /*background-color: rgba(255, 255, 255);*/
+    background-color: #aaaaaa;
+    width: 350px;
+    height: 120px;
+    z-index: 9999;
+    padding: 8px;
+    border: 3px solid #ddd;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); /* Horizontalus postūmis, vertikalus postūmis, skersmens, išplėtimo ir šešėlio spalva */
+    border-radius: 15px;
+    /*overflow-y: auto;*/
+
+}
+
+.password-input-form {
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    /*background-color: rgba(255, 255, 255);*/
+    background-color: #aaaaaa;
+    width: 410px;
+    height: 270px;
+    z-index: 9999;
+    padding: 8px;
+    border: 3px solid #ddd;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); /* Horizontalus postūmis, vertikalus postūmis, skersmens, išplėtimo ir šešėlio spalva */
+    border-radius: 15px;
+    /*overflow-y: auto;*/
+
+}
+
+
+th.plugin-choice-table {
+    height: 50px;
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+}
+
+th.choice-table-th {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th.choice-table-th a.a-btn {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    background-color: #898989; /* Mygtuko spalva */
+    border-radius: 5px;
+    border: 2px solid #757575;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+th.choice-table-th a.a-btn:hover {
+    text-decoration: none;
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+#new-password-input {
+
+    width: 95%;
+}
+
+#password-str-input {
+
+}
+
+#password-str-input:focus::placeholder {
+    color: transparent;
+}
+
+#new-password-input:focus::placeholder {
+    color: transparent;
+}
+
+.password-container, .input-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin-bottom: 10px; /* Norimas tarpas tarp eilučių */
+}
+
+
+.padding {
+    padding: 3px;
+}

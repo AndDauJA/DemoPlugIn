@@ -1,0 +1,11 @@
+/*================formos icon img===========*/
+.fusername, .fpassword ,[data-my-custom-attr="fusername"]{
+    background-color: darkseagreen;
+    /*background-image:  url("../images/icon16.png") !important;*/
+    /*background-position: calc(99% - 2px) 50% !important;*/
+    /*background-size: 16px 16px !important;*/
+    /*background-repeat: no-repeat !important;*/
+    /*transition: background-position, background-size !important;*/
+    /*cursor: default;*/
+
+}

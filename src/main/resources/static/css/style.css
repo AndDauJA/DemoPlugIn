@@ -1,0 +1,1801 @@
+:root {
+    --fontcolor-primary: rgb(250, 235, 215, 0.92); /* Pagrindinė šrifto spalva, jei norite ją keisti */
+    --bs-navbar-bg-color: rgb(59, 59, 84, 0.9); /* Pakeisti nauja norima spalva */
+    --bs-emphasis-color-rgb: 250, 235, 215, 100%;
+    --bs-navbar-color: rgb(250, 235, 215);
+    --fontcolor-about: rgb(72, 50, 22);
+}
+
+.navbar {
+
+    background-color: var(--bs-navbar-bg-color);
+    transition: background-color 2s ease;
+}
+
+.nav-link:hover {
+    text-decoration: none;
+    font-style: italic;
+}
+
+.nav-item-container {
+    margin-left: 20px;
+}
+
+.nav-item {
+    margin-left: 20px;
+    padding: 20px;
+    color: var(--fontcolor-primary);
+    /*font-size: clamp(14px, 2vw, 35px);*/
+    text-decoration: none;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgb(255, 255, 255);
+}
+
+.company-name-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.connected-username {
+    margin: 30px;
+    padding: 20px;
+    color: var(--fontcolor-about);
+    font-size: clamp(14px, 2vw, 35px);
+    background-color: rgb(128, 128, 128, 0.5);
+
+}
+
+.conected-name {
+    color: darkblue;
+}
+
+.company-name-empty-cell {
+
+}
+
+
+.select-language {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.color-general {
+
+}
+
+.color-general:hover {
+
+    color: var(--fontcolor-primary);
+    text-decoration: none;
+    font-style: italic;
+}
+
+
+.body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 120vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    /*background-image: url("../images/fonas-webpage.jpeg");*/
+    background-image: url("../images/hand-pressing-security-button-touch-screen.jpg");
+    background-size: 80% 100%;
+    z-index: 1;
+}
+
+#company-name .company-name {
+    color: var(--fontcolor-primary);
+    margin-left: 20px;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+
+#body-img-logo {
+    max-width: clamp(150px, 2vw, 250px);
+    margin-left: clamp(250px, 2vw, 250px);
+}
+
+
+.logo-name-user {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin-right: 50px;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+/*========================================About======================================================*/
+.about-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 80vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    /*background-image: url("../images/fonas-webpage.jpeg");*/
+    background-image: url("../images/hand-pressing-security-button-touch-screen.jpg");
+    background-size: 80% 100%;
+}
+
+/*==================================Index ===========================================================*/
+h2 {
+    font-size: clamp(16px, 2vw, 40px);
+}
+
+
+.main-wrap {
+    display: flex;
+    flex-direction: column;
+    position: relative; /* arba ištrinkite šią eilutę, jei nėra būtina */
+    /*align-content: baseline;*/
+    font-size: clamp(16px, 2vw, 35px);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /*width: 100%;*/
+    color: var(--fontcolor-about);
+    font-style: italic;
+    font-weight: bold;
+    padding-left: 300px;
+    padding-right: 180px;
+    top: 250px; /* arba ištrinkite šią eilutę */
+    margin-top: 0;
+}
+
+.index-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    /*margin-right: 150px;*/
+    /*margin-left: clamp(10px, 50vw, 50px);*/
+    padding-top: 100px;
+    padding-bottom: clamp(50px, 50vw, 250px);
+    font-size: clamp(16px, 2vw, 25px);
+}
+
+.index-first-advertisement,
+.index-second-advertisement {
+
+}
+
+.index-first-advertisement {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.index-first-advertisement > div {
+    flex: 1;
+    max-width: 50%; /* Tai neleis paveikslėliui užimti daugiau nei pusę */
+}
+
+.content-first {
+    padding: 10px; /* Pridėkite pagalvėlę, jei reikia */
+    max-width: 100%;
+    margin-right: 60px;
+    background-color: rgb(128, 128, 128, 0.5);
+}
+
+.index-img {
+    max-width: 100%; /* Minimalus plotis 50px, maksimalus 1900px, o tarp šių reikšmių - 50% ekrano pločio */
+    height: auto; /* Išlaiko paveikslėlio proporcijas */
+}
+
+
+.p-container {
+
+}
+
+.a-container {
+    text-decoration: none;
+    color: var(--fontcolor-about);
+}
+
+/*============================Registration Form===================================*/
+.registration-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 110vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("../images/hand-pressing-security-button-touch-screen.jpg");
+    background-size: 100% 100%;
+}
+
+.main-reg-container {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(250, 246, 246, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 700px;
+    text-align: center;
+}
+
+.form-reg {
+    border-width: 0 3px 3px 3px;
+    border-style: solid;
+    border-color: #f1f1f1;
+    border-radius: 0 0 15px 15px;
+    max-width: 660px;
+    /*width: 100%;*/
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 660px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.main-reg-h2 {
+    color: darkseagreen;
+    text-shadow: -2px -2px 0 #000,
+    2px -2px 0 #000,
+    -2px 2px 0 #000,
+    2px 2px 0 #000,
+    -1px -2px 0 #000,
+    1px -2px 0 #000,
+    -2px -1px 0 #000,
+    2px -1px 0 #000,
+    -2px 1px 0 #000,
+    2px 1px 0 #000,
+    -1px 2px 0 #000,
+    1px 2px 0 #000;
+    text-align: center;
+    font-size: clamp(24px, 2vw, 50px);
+    font-weight: bold;
+    border-width: 3px 3px 0 3px;
+    border-style: solid;
+    border-color: #f1f1f1;
+    border-radius: 15px 15px 0 0;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+.reg-form-btn:hover, .reg-form-btn:focus {
+    text-decoration: none;
+    cursor: pointer;
+    background-color: rgba(70, 69, 69, 0.8);
+}
+
+.reg-form-text-size {
+    font-size: clamp(10px, 2vw, 16px);
+
+}
+
+label {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: black;
+    font-weight: bold;
+}
+
+.reg-label-text-size {
+    font-size: 16px;
+    margin: 0;
+}
+
+input[class=reguser] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/*===================================== Login form===========================*/
+.login-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 90vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("../images/hand-pressing-security-button-touch-screen.jpg");
+    background-size: 100% 100%;
+}
+
+.login-form-container {
+    position: absolute;
+    border: 3px solid #f1f1f1;
+    width: 500px;
+    top: 37%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(250, 246, 246, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    text-align: center;
+}
+
+#login-img-logo {
+    max-width: 100px;
+    margin-left: 5px;
+}
+
+#login-company-name {
+    color: rgba(75, 72, 65, 0.65);
+    margin-right: 20px;
+
+}
+
+.psw-lable-scndpart {
+
+    text-align: center;
+    font-size: 12px;
+    align-self: center;
+    color: rgb(113, 111, 111);
+
+}
+
+/* Full-width inputs */
+input[id=loginusername], input[id=loginpassword] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.login-button {
+    background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 100%;
+
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.6;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+    width: 30%;
+    padding: 10px 18px;
+    background-color: #f44336;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 2px 0 12px 0;
+
+}
+
+.login-form-text-size {
+    font-size: 16px;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+.cancle-container {
+    display: flex;
+    padding: 5px;
+    width: 100%;
+}
+
+.register-forgot-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-left: auto;
+}
+
+.psw-forgot {
+    margin-left: auto;
+}
+
+.login-announcment {
+    /*display: flex;*/
+    /*display: block;*/
+    align-items: center;
+    text-align: center;
+    /*font-size: 12px;*/
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.remember-me-container {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-left: 10px;
+}
+
+/*==========================================================================================*/
+
+
+/* ==============================   FORM  User GENERAL  ============================================ */
+.general-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 90vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("../images/hand-pressing-security-button-touch-screen.jpg");
+    background-size: 100% 100%;
+}
+
+.general-form {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*max-height: calc(100vh - 60px);*/
+    background-color: rgba(255, 255, 255, 0.6);
+    overflow-y: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    text-align: center;
+    font-size: 32px;
+}
+
+.general-form-button {
+    background-color: #5a6268;
+    border-color: #545b62;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Šešėlis, kad atrodytų iškilęs */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacija paspaudus */
+
+}
+
+
+.generate-button {
+    margin-top: 10px;
+    padding: 0;
+    border-radius: 0 10px 10px 0;
+    height: 35px;
+    font-size: 24px;
+    margin-bottom: 0;
+
+}
+
+.button-text {
+    font-size: 18px;
+}
+
+.generate-button-text {
+
+    font-size: 24px;
+}
+
+.input-gen-text {
+    font-size: 24px;
+
+}
+
+.img-size {
+    margin-top: 10px;
+    width: 65px;
+    height: auto;
+}
+
+.card-header {
+    font-size: 50px;
+}
+
+
+/*===========================================checkBoxes ==================================*/
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    /*transform: scale(1.5);*/
+    background-position: center;
+}
+
+.custom-checkbox .custom-control-label::before {
+    content: "";
+    display: inline-block;
+    position: relative;
+    left: -1em; /* Pakeiskite šią reikšmę pagal poreikį */
+    top: 0;
+    height: 1.25em;
+    width: 1.25em;
+    background-color: #fff;
+    border: #adb5bd solid 1px;
+}
+
+.custom-checkbox .custom-control-label::after {
+    position: relative;
+    left: -1em; /* Koreguokite šią reikšmę, jei reikia, kad varnelė būtų centre */
+    top: -1.5em; /* Koreguokite šią reikšmę, jei reikia, kad varnelė būtų centre */
+    display: block;
+    width: 1.25em;
+    height: 1.25em;
+    content: "";
+    background-size: 100% 100%;
+    background-position: center;
+}
+
+/*=============================Table===============================*/
+.gentable-width {
+    width: 800px;
+    max-width: 800px;
+    max-height: 300px;
+}
+
+.gen-id-size {
+    text-align: justify;
+    padding-left: 20px;
+    width: 100px;
+}
+
+.gen-notes-size {
+    max-width: 350px; /* Maksimalus plotis */
+    width: 350px; /* Fiksuotas plotis */
+    padding-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gen-url-size {
+    max-width: 250px; /* Maksimalus plotis */
+    width: 250px; /* Fiksuotas plotis */
+    padding-right: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.general-table-container {
+    max-height: 420px; /* Nustato maksimalų konteinerio aukštį */
+    overflow-y: auto; /* Leidžia turiniui slenkti vertikaliai */
+}
+
+.bt-delete-width {
+    max-width: 100px; /* Maksimalus plotis */
+    width: 100px; /* Fiksuotas plotis */
+    font-size: 24px;
+    border-radius: 10px;
+    /*margin-top: 25px;*/
+    margin-bottom: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Šešėlis, kad atrodytų iškilęs */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacija paspaudus */
+}
+
+/*============================Generated key img==================*/
+#generatedKey-img {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /*width: 100%;*/
+}
+
+.img-fluid {
+    max-height: 100%;
+}
+
+/*============================Notes==================*/
+
+
+/* ==============================Modal content ================================*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    top: 35%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Sit on top */
+    width: 35%; /* Full width */
+    height: 350px; /* Full height */
+    background-color: rgba(255, 255, 255, 0.6);
+    overflow-y: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+
+    max-width: 600px; /* Maximum width */
+    text-align: center;
+    font-size: 24px;
+
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 2%; /* 15% from the top and centered */
+    padding: 35px;
+    border: 1px solid #888;
+    /*width: 98%; !* Could be more or less, depending on screen size *!*/
+    height: 80%;
+}
+
+.modal-generate {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    top: 35%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+    z-index: 1; /* Sit on top */
+    width: 35%; /* Full width */
+    height: 150px; /* Full height */
+    background-color: rgba(255, 255, 255, 0.6);
+    overflow-y: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+
+    max-width: 100px; /* Maximum width */
+    text-align: center;
+    font-size: 24px;
+
+}
+
+.generate-modal-content {
+    background-color: #fefefe;
+    margin: 2%; /* 15% from the top and centered */
+    padding: 35px;
+    border: 1px solid #888;
+    /*width: 98%; !* Could be more or less, depending on screen size *!*/
+    height: 50%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*=============================================================================================================*/
+
+/* ==============================   FORM  User ACCOUNT  ============================================ */
+.account-body-background {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 90vh;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-position: center;
+    background-attachment: fixed;
+    background-image: url("../images/hand-pressing-security-button-touch-screen.jpg");
+    background-size: 100% 100%;
+}
+
+.picture-form-container {
+    display: flex;
+    flex-direction: row;
+    /* Adjust this based on your preference */
+
+}
+
+.picture-form {
+    width: 300px;
+    height: 50%;
+    border-width: 0 3px 3px 3px;
+    border-radius: 15px;
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    background-color: rgba(250, 246, 246, 0.4);
+    /*background-color: greenyellow;*/
+}
+
+.img-account-profile {
+    width: 150px;
+}
+
+.main-account-form {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    top: 37%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*background-color: rgba(220, 36, 36, 0.4);*/
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    max-width: 1000px;
+    max-height: 1000px;
+    height: 720px;
+    text-align: center;
+}
+
+
+.account-detail-card {
+    border-width: 0 3px 3px 3px;
+    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    /* width: 500px; */
+    background-color: rgba(250, 246, 246, 0.1);
+    /*background-color: #04AA6D;*/
+}
+
+.account-detail-card-fill-form {
+    border-width: 0 3px 3px 3px;
+    border-radius: 15px;
+    width: 100%;
+    height: 620px;
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    background-color: rgba(250, 246, 246, 0.2);
+
+}
+
+input[id=inputUsername] {
+    width: 100%;
+    padding: 12px 20px;
+
+}
+
+
+.picture-card-name {
+    color: black;
+    font-size: 25px;
+}
+
+.card-header-names {
+    color: black;
+    font-size: 35px;
+}
+
+.account-form-button {
+    background-color: #5a6268;
+    border-color: #545b62;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    /*margin-top: 25px;*/
+    margin-bottom: 15px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Šešėlis, kad atrodytų iškilęs */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animacija paspaudus */
+    font-size: 18px;
+}
+
+.input-acc-text {
+    font-size: 18px;
+
+}
+
+/*==============================================================================================================*/
+
+#pass {
+    color: red;
+    font-size: 12px;
+}
+
+input {
+    display: block;
+    /*width: 100%;*/
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+select {
+    display: block;
+    /*width: 100%;*/
+    margin-right: 5px;
+    /*padding: 10px;*/
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+
+/*=============================================Footer==============================================================*/
+.footer-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    background-color: rgb(59, 59, 84);
+    font-size: clamp(16px, 2vw, 25px);
+    padding-bottom: 10px;
+}
+
+
+.wrap-kontakt-ul, .kontaktai {
+    list-style: none;
+    color: var(--fontcolor-primary);
+}
+
+div .go-home-link a {
+    padding-left: 40px;
+    padding-bottom: 40px;
+    text-decoration: none;
+    color: var(--fontcolor-primary);
+    /*font-size: 20px;*/
+}
+
+.center-infotext {
+    padding-top: 75px;
+}
+
+
+
+/*======================================================MEDIA======================================================*/
+/*===================================================================================================================*/
+/*===================================================================================================================*/
+
+
+@media screen and (max-width: 1920px) {
+    .body-background {
+        min-height: 50vh;
+    }
+
+    .nav-item-container {
+        margin-left: 0px;
+    }
+
+    .collapse {
+        /*padding-left: 100px;*/
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-item {
+        margin: 15px;
+        padding: 5px;
+        font-size: clamp(5px, 2vw, 25px);
+    }
+
+    .connected-username {
+        margin: 5px;
+        padding: 20px;
+        font-weight: bold;
+        font-size: clamp(4px, 2vw, 25px);
+    }
+
+    #body-img-logo {
+        max-width: clamp(150px, 2vw, 200px);
+        margin-left: 170px;
+    }
+
+    .company-name {
+
+        font-size: 30px;
+    }
+
+
+    /*==================================Index=================================*/
+    .index-main-container {
+
+        padding-top: 50px;
+        padding-bottom: clamp(50px, 50vw, 250px);
+        font-size: clamp(16px, 2vw, 20px);
+    }
+
+    .content-first {
+        padding: 10px;
+        max-width: 100%;
+        margin-right: 10px;
+        font-size: 20px;
+
+    }
+
+    .main-wrap {
+        padding-left: 200px;
+        margin-right: 10px;
+        /*padding-right: 150px;*/
+        top: 150px; /* arba ištrinkite šią eilutę */
+
+    }
+
+    /*===================================About==============================*/
+    .about-body-background {
+        min-height: 20vh;
+
+    }
+
+    /*============================Registration Form===================================*/
+    .registration-body-background {
+        min-height: 120vh;
+    }
+
+    .main-reg-container {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        width: 500px;
+
+    }
+
+    .form-reg {
+        max-width: 600px;
+        width: 460px;
+
+    }
+
+    .main-reg-h2 {
+        font-size: clamp(14px, 2vw, 25px);
+
+    }
+
+    .reg-form-btn:hover, .reg-form-btn:focus {
+    }
+
+    .reg-form-text-size {
+        font-size: clamp(8px, 2vw, 12px);
+    }
+
+    .reg-label-text-size {
+        font-size: 15px;
+
+    }
+
+    label {
+
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        text-align: left;
+        color: black;
+        font-weight: bold;
+    }
+
+    input[class=reguser] {
+        padding: 6px 6px;
+        margin: 8px 0;
+        /*font-size: 14px;*/
+    }
+
+    /* ==============================   FORM  User GENERAL  ============================================ */
+    .general-body-background {
+        min-height: 100vh;
+    }
+
+    .general-form {
+        top: 60%;
+        left: 55%;
+        font-size: 32px;
+    }
+
+    .general-form-button {
+    }
+
+    .generate-button {
+        margin-top: 10px;
+        padding: 0;
+        border-radius: 0 10px 10px 0;
+        height: 35px;
+        font-size: 24px;
+        margin-bottom: 0;
+
+    }
+
+    .button-text {
+        font-size: 18px;
+    }
+
+    .generate-button-text {
+
+        font-size: 24px;
+    }
+
+    .input-gen-text {
+        font-size: 14px;
+
+    }
+
+    .img-size {
+        margin-top: 10px;
+        width: 65px;
+        height: auto;
+    }
+
+    .card-header {
+        font-size: 50px;
+    }
+
+
+    /*===========================================checkBoxes ==================================*/
+    /*=============================Table===============================*/
+    .gentable-width {
+        width: 800px;
+        max-width: 800px;
+        font-size: 24px;
+    }
+
+    .gen-id-size {
+        font-size: 14px;
+    }
+
+    .gen-table-text-size {
+        font-size: 24px;
+    }
+
+    .gen-notes-size {
+
+    }
+
+    .gen-url-size {
+
+    }
+
+
+    .general-table-container {
+        max-height: 520px; /* Nustato maksimalų konteinerio aukštį */
+    }
+
+    .bt-delete-width {
+        max-width: 100px; /* Maksimalus plotis */
+        width: 100px; /* Fiksuotas plotis */
+        font-size: 24px;
+        border-radius: 5px;
+
+    }
+
+    /*============================Generated key img==================*/
+    /*============================Notes==================*/
+    /* ==============================Modal content ================================*/
+    .modal {
+
+        top: 35%;
+        left: 60%;
+        width: 35%; /* Full width */
+        height: 300px; /* Full height */
+        padding: 20px;
+        max-width: 600px; /* Maximum width */
+        font-size: 20px;
+
+    }
+
+    .modal-content {
+
+        padding-top: 15px;
+        height: 90%;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    /*============================================================================================================*/
+    /*===================================== Login form===========================*/
+    .login-body-background {
+        min-height: 90vh;
+
+    }
+
+    .login-form-container {
+        width: 400px;
+        top: 40%;
+        padding: 10px 20px;
+    }
+
+
+    .psw-lable-scndpart {
+        text-align: center;
+        font-size: 10px;
+        align-self: center;
+        color: rgb(113, 111, 111);
+
+    }
+
+
+    /* Full-width inputs */
+    input[id=loginusername], input[id=loginpassword] {
+        padding: 10px 15px;
+        margin: 8px 0;
+
+    }
+
+    .login-button {
+        padding: 15px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+
+    }
+
+    /* Extra style for the cancel button (red) */
+    .cancelbtn {
+        width: 30%;
+        padding: 10px 18px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    /* Center the avatar image inside this container */
+    .imgcontainer {
+        margin: 2px 0 12px 0;
+
+    }
+
+    .login-form-text-size {
+        font-size: 14px;
+
+    }
+
+    /* Add padding to containers */
+    .container {
+        padding: 6px;
+    }
+
+    .cancle-container {
+        border-radius: 5px;
+        padding: 6px;
+    }
+
+    .register-forgot-container {
+        margin-top: 5px;
+
+    }
+
+    .psw-forgot {
+        margin-left: auto;
+    }
+
+    .login-announcment {
+
+
+    }
+
+    /* The "Forgot password" text */
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    .remember-me-container {
+
+        margin-left: 10px;
+    }
+
+    /*==========================================================================================*/
+    /* ==============================   FORM  User ACCOUNT  ============================================ */
+    .account-body-background {
+        min-height: 100vh;
+    }
+
+    .main-account-form {
+        top: 35%;
+        max-width: 1000px;
+        max-height: 1000px;
+        height: 680px;
+
+    }
+
+    .picture-form-container {
+        display: flex;
+        flex-direction: row;
+        /* Adjust this based on your preference */
+
+    }
+
+    .picture-form {
+
+    }
+
+    .img-account-profile {
+        width: 150px;
+    }
+
+    .account-detail-card {
+
+    }
+
+    .account-detail-card-fill-form {
+        height: 580px;
+        padding: 10px 20px;
+
+    }
+
+    input[id=inputUsername] {
+        width: 100%;
+        padding: 12px 20px;
+
+    }
+
+    .picture-card-name {
+        font-size: 25px;
+    }
+
+    .card-header-names {
+        font-size: 35px;
+    }
+
+    .account-form-button {
+        margin-bottom: 5px;
+        font-size: 18px;
+    }
+
+    .input-acc-text {
+        font-size: 16px;
+        margin: 2px;
+        padding: 8px;
+    }
+
+    input[id=inputUsername] {
+        width: 100%;
+        padding: 5px 10px;
+        margin: 0;
+    }
+
+    .acc-lable {
+        margin: 5px;
+    }
+
+    .acc-card-form {
+
+    }
+
+
+}
+
+/*===================================Rezolution 1230============================================*/
+@media screen and (max-width: 1230px) {
+    .body-background {
+        min-height: 50vh;
+    }
+
+    .nav-item {
+        margin: 5px;
+        padding: 5px;
+        font-size: clamp(5px, 2vw, 17px);
+    }
+
+    .connected-username {
+        margin: 5px;
+        padding: 20px;
+        font-weight: bold;
+        font-size: clamp(4px, 2vw, 15px);
+    }
+
+    #body-img-logo {
+        max-width: clamp(100px, 2vw, 150px);
+        margin-left: 20px;
+    }
+
+    .company-name {
+        font-size: 20px;
+    }
+
+
+    /*==============================About===============================================*/
+    .about-body-background {
+        min-height: 10vh;
+
+    }
+
+    /*==================================Index=================================*/
+    .index-main-container {
+        padding-top: 50px;
+        padding-bottom: clamp(50px, 50vw, 250px);
+        font-size: clamp(16px, 2vw, 15px);
+    }
+
+    .content-first {
+        padding: 10px;
+        max-width: 100%;
+        margin-right: 0px;
+        font-size: 13px;
+
+    }
+
+    .main-wrap {
+        top: 50px; /* arba ištrinkite šią eilutę */
+        padding-left: 105px;
+        margin-right: 10px;
+
+        padding-right: 100px;
+
+    }
+
+
+    /*============================Registration Form===================================*/
+    .registration-body-background {
+        min-height: 180vh;
+    }
+
+    .main-reg-container {
+        top: 37%;
+        width: 400px;
+    }
+
+    .form-reg {
+        max-width: 400px;
+        width: 360px;
+
+    }
+
+    .main-reg-h2 {
+        font-size: clamp(14px, 2vw, 20px);
+        padding-bottom: 5px;
+
+    }
+
+    .reg-form-btn:hover, .reg-form-btn:focus {
+    }
+
+    .reg-form-text-size {
+        font-size: clamp(6px, 2vw, 10px);
+    }
+
+    .reg-label-text-size {
+        font-size: 12px;
+    }
+
+
+    input[class=reguser] {
+        padding: 6px 6px;
+        margin: 2px 0;
+        /*font-size: 14px;*/
+    }
+
+    /* ==============================   FORM  User GENERAL  ============================================ */
+    .general-body-background {
+        min-height: 100vh;
+    }
+
+    .general-form {
+        top: 55%;
+        left: 50%;
+        font-size: 15px;
+    }
+
+    .general-form-button {
+        padding: 3px;
+        border-radius: 5px;
+        font-size: 12px;
+        height: 35px;
+    }
+
+
+    .generate-button {
+        margin-top: 2px;
+        height: 31px;
+        margin-bottom: 0;
+
+    }
+
+    .input-gen-text {
+        margin: 0;
+        font-size: 12px;
+    }
+
+    .img-size {
+        margin-top: 3px;
+        width: 45px;
+    }
+
+
+    .button-text {
+        font-size: 12px;
+
+    }
+
+    .generate-button-text {
+        font-size: 10px;
+    }
+
+    /*===========================================checkBoxes ==================================*/
+    /*=============================Table===============================*/
+    .gentable-width {
+        width: 200px;
+        max-width: 200px;
+        font-size: 14px;
+    }
+
+    .gen-id-size {
+        width: 10px;
+        margin-right: 10px;
+    }
+
+    .gen-table-text-size {
+        font-size: 14px;
+    }
+
+    .gen-url-size {
+        max-width: 50px; /* Maksimalus plotis */
+        width: 50px; /* Fiksuotas plotis */
+
+    }
+
+    .general-table-container {
+        max-height: 220px; /* Nustato maksimalų konteinerio aukštį */
+        overflow-y: auto; /* Leidžia turiniui slenkti vertikaliai */
+    }
+
+    .bt-delete-width {
+        max-width: 50px; /* Maksimalus plotis */
+        width: 50px; /* Fiksuotas plotis */
+        font-size: 10px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+    }
+
+    /*============================Generated key img==================*/
+    /*============================Notes==================*/
+    /* ==============================Modal content ================================*/
+    .modal {
+        top: 35%;
+        height: 200px; /* Full height */
+        max-width: 600px; /* Maximum width */
+        font-size: 14px;
+
+    }
+
+    .modal-content {
+        padding-top: 10px;
+        height: 90%;
+    }
+
+    .close {
+        font-size: 18px;
+    }
+
+    /*=============================================================================================================*/
+    /*===================================== Login form===========================*/
+    .login-body-background {
+        min-height: 110vh;
+
+    }
+
+    .login-form-container {
+        width: 350px;
+        height: 470px;
+        top: 37%;
+        padding: 10px 20px;
+    }
+
+
+    .psw-lable-scndpart {
+        text-align: center;
+        font-size: 10px;
+        align-self: center;
+        color: rgb(113, 111, 111);
+
+    }
+
+    /* Full-width inputs */
+    input[id=loginusername], input[id=loginpassword] {
+        padding: 5px 7px;
+        margin: 2px 0;
+
+    }
+
+    .login-button {
+        padding: 10px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+
+    }
+
+    /* Extra style for the cancel button (red) */
+    .cancelbtn {
+        width: 30%;
+        padding: 10px 18px;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    /* Center the avatar image inside this container */
+    .imgcontainer {
+        margin: 0;
+
+    }
+
+    .login-form-text-size {
+        font-size: 12px;
+
+    }
+
+    /* Add padding to containers */
+    .container {
+        padding: 0;
+    }
+
+    .cancle-container {
+
+        padding: 0;
+    }
+
+    .register-forgot-container {
+        margin-top: 15px;
+
+    }
+
+    .psw-forgot {
+        margin-left: auto;
+    }
+
+    .login-announcment {
+        font-size: 8px;
+
+    }
+
+    /* The "Forgot password" text */
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    .remember-me-container {
+
+        margin-left: 10px;
+    }
+
+    /*==========================================================================================*/
+    /* ==============================   FORM  User ACCOUNT  ============================================ */
+    .account-body-background {
+        min-height: 130vh;
+    }
+
+    .main-account-form {
+        top: 37%;
+        max-width: 650px;
+        width: 650px;
+        max-height: 550px;
+        height: 520px;
+
+    }
+
+    .account-form-button {
+        padding: 3px;
+        border-radius: 5px;
+        font-size: 12px;
+        height: 35px;
+    }
+
+
+    .picture-form-container {
+
+
+    }
+
+    .img-account-profile {
+        width: 100px;
+    }
+
+
+    .account-detail-card-fill-form {
+        height: 450px;
+
+    }
+
+    .account-detail-card {
+    }
+
+    input[id=inputUsername] {
+        width: 100%;
+        padding: 12px 20px;
+
+    }
+
+    .card-header-names {
+        font-size: 20px;
+    }
+
+    .input-acc-text {
+        font-size: 10px;
+        margin: 2px;
+        padding: 5px;
+    }
+
+
+    .picture-card-name {
+        font-size: 20px;
+    }
+
+    input[id=inputUsername] {
+        width: 100%;
+        padding: 5px 5px;
+        margin: 0;
+    }
+
+    .acc-lable {
+        margin: 5px;
+    }
+
+    .acc-card-form {
+
+    }
+
+
+}
+
+@media screen and (max-width: 915px) {
+    .body-background {
+        min-height: 10vh;
+        background-image: url("../images/hand-pressing-security-button-touch-screen-1000x705.jpg");
+    }
+
+    .registration-body-background {
+
+        min-height: 120vh;
+
+    }
+
+    .login-body-background {
+        min-height: 120vh;
+
+    }
+
+    .button-text {
+        font-size: 5px;
+    }
+}
+
+/*===================================Rezolution 412px============================================*/
+@media screen and (max-width: 412px) {
+    .body-background {
+        display: flex;
+        flex-direction: column;
+        min-height: 110vh;
+        background-repeat: no-repeat;
+        /*background-size: cover;*/
+        background-position: center;
+        /*background-attachment: fixed;*/
+        /*background-image: url("../images/fonas-webpage.jpeg");*/
+
+        background-image: url("../images/hand-pressing-security-button-touch-screen-1000x705.jpg");
+        /*background-size: cover;*/
+        background-size: 100%;
+
+    }
+
+    .nav-item {
+        margin: 5px;
+        padding: 5px;
+        font-size: clamp(5px, 2vw, 17px);
+    }
+
+    .connected-username {
+        margin: 5px;
+        padding: 20px;
+        font-weight: bold;
+        font-size: clamp(4px, 2vw, 15px);
+    }
+
+    #body-img-logo {
+        max-width: clamp(50px, 2vw, 75px);
+        margin-left: 10px;
+    }
+
+    .company-name {
+        font-size: 10px;
+    }
+
+
+    /*==============================About===============================================*/
+    .about-body-background {
+        min-height: 100vh;
+
+    }
+
+    /*==================================Index=================================*/
+    .index-main-container {
+        padding-top: 20px;
+        /*padding-bottom: clamp(50px, 50vw, 250px);*/
+        /*font-size: clamp(6px, 2vw, 10px);*/
+    }
+
+    .content-first {
+        padding: 10px;
+        /*max-width: 100%;*/
+        margin-right: 0px;
+        font-size: 8px;
+
+    }
+
+    .content-first-title {
+        font-size: 12px;
+    }
+
+    .main-wrap {
+        /*top: 50px; !* arba ištrinkite šią eilutę *!*/
+        padding-left: 30px;
+        /*margin-right: 10px;*/
+        padding-right: 30px;
+
+    }
+
+
+    /*=============================================Footer==============================================================*/
+    .footer-wrap {
+        padding-bottom: 20px; /* Padidinkite padding, kad footeris būtų aiškiau matomas */
+        font-size: 12px;
+    }
+
+
+    .wrap-kontakt-ul, .kontaktai {
+
+    }
+
+    div .go-home-link a {
+        padding-left: 10px;
+        padding-bottom: 10px;
+
+        /*font-size: 20px;*/
+    }
+
+    .center-infotext {
+        padding-top: 0px;
+    }
+
+    body, html {
+        height: 100%;
+        /*margin: 0;*/
+        /*padding: 0;*/
+        display: flex;
+        flex-direction: column;
+    }
+
+
+}
+

@@ -1,0 +1,125 @@
+/*============================= PlugIn form ==============================*/
+.plugin-table {
+
+    position: absolute;
+    color: black;
+    /*background-color: rgba(255, 255, 255);*/
+    background-color: #aaaaaa;
+    width: 400px;
+    height: 400px;
+    z-index: 9999;
+    padding: 8px;
+    border: 3px solid #ddd;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); /* Horizontalus postūmis, vertikalus postūmis, skersmens, išplėtimo ir šešėlio spalva */
+    border-radius: 15px;
+
+    overflow-y: auto;
+}
+
+.plugin-table-container {
+    width: 100%;
+}
+
+.plugin-table-name {
+    color: #04AA6D;
+
+}
+
+.plugin-web-form {
+    width: 270px;
+    height: 20px;
+
+    margin-bottom: 10px;
+    color: white;
+    text-align: center;
+}
+
+.plugin-web-form.active {
+    background-color: green;
+}
+
+.plugin-web-form.inactive {
+    background-color: red;
+}
+
+.plugin-btn button {
+    background-color: #CCCCCC;
+}
+
+.plugin-btn button.deactivate {
+    background-color: #FF5733;
+}
+
+.plugin-btn button {
+    margin: 5px;
+}
+
+/* Zalias mygtuko stilius */
+.plugin-btn button.active {
+    background-color: #4CAF50;
+}
+
+
+.plugin-table-th {
+    background-color: #b9b9b9;
+    font-weight: bold;
+}
+
+.plugin-btn {
+    display: inline-block;
+    margin-right: 10px; /* Pakeiskite norimą atstumą tarp mygtukų */
+}
+
+
+.register-form {
+
+    position: absolute;
+    color: black;
+    /*background-color: rgba(255, 255, 255);*/
+    background-color: #aaaaaa;
+    width: 400px;
+    height: 400px;
+    z-index: 9999;
+    padding: 8px;
+    border: 3px solid #ddd;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.8); /* Horizontalus postūmis, vertikalus postūmis, skersmens, išplėtimo ir šešėlio spalva */
+    border-radius: 15px;
+    max-height: 50px;
+    overflow-y: auto;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+.logo-title-box {
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto; /* Centruoti per vidurį horizontaliai */
+background-color: green;
+
+}
+.logo-image{
+    flex: 0 0 25%; /* Užima 25% pirmos eilės vietos, bet neprailgina */
+    background-image: url('/static/images/3786012.jpg'); /* Paveikslėlis turi būti nurodytas pagal reikalavimus */
+    background-size: cover; /* Užtikrinti, kad paveikslėlis užims visą vietą */
+    height: 50px; /* Pakeiskite pagal savo poreikius */
+    width: 25%; /* Arba naudokite kitą matavimą */
+
+}
+.lofingtodb-form-title {
+    flex: 1; /* Užima likusią vietą */
+    text-align: center; /* Centruoti tekstą horizontaliai */
+    font-size: 15px;
+
+}
