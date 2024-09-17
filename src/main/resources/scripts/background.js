@@ -139,6 +139,7 @@ function executeScriptsIfNeeded() {
         });
     });
 }
+
 // }
 
 function reloadActiveTabs() {
@@ -555,7 +556,8 @@ chrome.runtime.onInstalled.addListener(() => {
                             console.log('extensionId sėkmingai nustatytas');
                         })
                         .catch(error => {
-                            console.error('Klaida nustatant extensionId:', error);
+                            //TODO meta klaida kad neranda extentionId nors ji randa ir iraso i db
+                            console.log('Klaida nustatant extensionId:', error);
                         });
                 });
             });
