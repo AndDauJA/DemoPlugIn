@@ -99,44 +99,47 @@ function redirectToLoginPage() {
 let isActivated = false; // Pradinė būsena - neaktyvuota
 
 function executeScriptsIfNeeded() {
-    if (isActivated) { // Jei neaktyvuota, nedaryti nieko
+    // if (isActivated) { // Jei neaktyvuota, nedaryti nieko
+    if (!isActivated) {
+        // Jei plėtinys neaktyvuotas, nedaryti nieko
+        return;
+    }
+    const scripts = [
+        "scripts/icon.js",
+        "scripts/getwebaddress.js",
+        "scripts/formchoices.js",
+        "scripts/loadtimespinner.js",
+        "scripts/inputForm.js",
+        "scripts/formPlugin.js",
+        "scripts/passwordForm.js",
+        "scripts/logintodb.js",
 
-        const scripts = [
-            "scripts/icon.js",
-            "scripts/getwebaddress.js",
-            "scripts/formchoices.js",
-            "scripts/loadtimespinner.js",
-            "scripts/inputForm.js",
-            "scripts/formPlugin.js",
-            "scripts/passwordForm.js",
-            "scripts/logintodb.js",
+    ];
 
-        ];
+    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+        tabs.forEach(tab => {
+            const url = new URL(tab.url);
+            if (url.protocol === 'chrome:' || url.protocol === 'about:') {
+                console.log(`Skipping tab with URL ${tab.url}`);
+                return;
+            }
 
-        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-            tabs.forEach(tab => {
-                const url = new URL(tab.url);
-                if (url.protocol === 'chrome:' || url.protocol === 'about:') {
-                    console.log(`Skipping tab with URL ${tab.url}`);
-                    return;
-                }
-
-                scripts.forEach(script => {
-                    chrome.scripting.executeScript({
-                        target: {tabId: tab.id},
-                        files: [script]
-                    }, function (results) {
-                        if (chrome.runtime.lastError) {
-                            console.error('Script injection error:', chrome.runtime.lastError.message);
-                        } else {
-                            console.log(`Injected ${script} into tab ${tab.id}`);
-                        }
-                    });
+            scripts.forEach(script => {
+                chrome.scripting.executeScript({
+                    target: {tabId: tab.id},
+                    files: [script]
+                }, function (results) {
+                    if (chrome.runtime.lastError) {
+                        console.error('Script injection error:', chrome.runtime.lastError.message);
+                    } else {
+                        console.log(`Injected ${script} into tab ${tab.id}`);
+                    }
                 });
             });
         });
-    }
+    });
 }
+// }
 
 function reloadActiveTabs() {
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
@@ -332,7 +335,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 
-
 function validateUsername(username, sendUsernameCallback) {
     // fetch(`http://localhost:8080/api/checkUsername/${username}`)
     fetch(`https://brigama.lt/api/checkUsername/${username}`)
@@ -447,6 +449,75 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 //         });
 // });
 
+// chrome.runtime.onInstalled.addListener(() => {
+//     // Pirmiausia, gaukite UUID iš serverio
+//     fetch('https://brigama.lt/get-client-uuid')
+//         .then(response => {
+//             if (!response.ok) {
+//                 throw new Error('Nepavyko gauti UUID');
+//             }
+//             return response.text(); // UUID grąžinamas kaip tekstas
+//         })
+//         .then(clientUuid => {
+//             // Patikrinkite, ar extensionId jau yra local storage
+//             chrome.storage.local.get(['extensionId'], (result) => {
+//                 if (result.extensionId) {
+//                     console.log('extensionId jau yra local storage:', result.extensionId);
+//                     return; // Jei jau yra, nieko nedaryti
+//                 }
+//
+//                 // Jei nėra, įrašykite extensionId į local storage
+//                 chrome.storage.local.set({extensionId: chrome.runtime.id}, () => {
+//                     // Atlikite POST užklausą su extensionId ir clientUuid
+//                     fetch('https://brigama.lt/set-extension-id', {
+//                         method: 'POST',
+//                         headers: {
+//                             'Content-Type': 'application/json',
+//                         },
+//                         body: JSON.stringify({
+//                             extensionId: chrome.runtime.id,
+//                             clientUuid: clientUuid // Įtraukite clientUuid į užklausą
+//                         }),
+//                     })
+//                         .then(response => {
+//                             if (!response.ok) {
+//                                 throw new Error('Nepavyko nustatyti extensionId');
+//                             }
+//                             console.log('extensionId sėkmingai nustatytas');
+//
+//                             // Atlikite užklausą gauti extensionId
+//                             fetch(`https://brigama.lt/get-extension-id?clientUUID=${clientUuid}`)
+//                                 .then(response => {
+//                                     if (!response.ok) {
+//                                         throw new Error('Nepavyko gauti extensionId');
+//                                     }
+//                                     return response.text();
+//                                 })
+//                                 .then(extensionId => {
+//                                     // Įrašykite gautą extensionId į local storage
+//                                     chrome.storage.local.set({extensionId: extensionId}, () => {
+//                                         // Atnaujinkite visus skirtukus su nauju extensionId
+//                                         chrome.tabs.query({}, (tabs) => {
+//                                             tabs.forEach((tab) => {
+//                                                 chrome.tabs.reload(tab.id);
+//                                             });
+//                                         });
+//                                     });
+//                                 })
+//                                 .catch(error => {
+//                                     console.error('Klaida gaunant extensionId:', error);
+//                                 });
+//                         })
+//                         .catch(error => {
+//                             console.error('Klaida nustatant extensionId:', error);
+//                         });
+//                 });
+//             });
+//         })
+//         .catch(error => {
+//             console.error('Klaida gaunant UUID:', error);
+//         });
+// });
 chrome.runtime.onInstalled.addListener(() => {
     // Pirmiausia, gaukite UUID iš serverio
     fetch('https://brigama.lt/get-client-uuid')
@@ -482,29 +553,6 @@ chrome.runtime.onInstalled.addListener(() => {
                                 throw new Error('Nepavyko nustatyti extensionId');
                             }
                             console.log('extensionId sėkmingai nustatytas');
-
-                            // Atlikite užklausą gauti extensionId
-                            fetch(`https://brigama.lt/get-extension-id?clientUUID=${clientUuid}`)
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('Nepavyko gauti extensionId');
-                                    }
-                                    return response.text();
-                                })
-                                .then(extensionId => {
-                                    // Įrašykite gautą extensionId į local storage
-                                    chrome.storage.local.set({extensionId: extensionId}, () => {
-                                        // Atnaujinkite visus skirtukus su nauju extensionId
-                                        chrome.tabs.query({}, (tabs) => {
-                                            tabs.forEach((tab) => {
-                                                chrome.tabs.reload(tab.id);
-                                            });
-                                        });
-                                    });
-                                })
-                                .catch(error => {
-                                    console.error('Klaida gaunant extensionId:', error);
-                                });
                         })
                         .catch(error => {
                             console.error('Klaida nustatant extensionId:', error);
