@@ -33,91 +33,97 @@ document.addEventListener('click', function (event) {
 document.addEventListener('click', function (event) {
     const target = event.target;
 
-// Patikrinkite, ar plėtinys aktyvuotas
-    chrome.storage.local.get('isActive', function (data) {
-        const isActive = data.isActive || false;
+// // Patikrinkite, ar plėtinys aktyvuotas
+//     chrome.storage.local.get('isActive', function (data) {
+//         const isActive = data.isActive || false;
+//
+//         if (!isActive) {
+//             // Jei plėtinys neaktyvus, nedarykite nieko
+//             return;
+//         }
 
-        if (!isActive) {
-            // Jei plėtinys neaktyvus, nedarykite nieko
+    if ((target.id === 'existing-record') && !target.classList.contains(PROCESSED_INPUT_CLASS)) {
+        removeChoiceTable();
+        showLoadingSpinner(); // Rodyti indikatorių
+        chrome.runtime.sendMessage({action: 'checkSession'}, function (response) {
+            // Handle the response from the background script
+            console.log(response);
+        });
+
+    }
+
+
+    existingTable = document.querySelector(`.${TABLE_IDENTIFIER}`);
+
+    if (target.tagName === 'A' && (target.parentElement.classList.contains('username-cell') || target.parentElement.classList.contains('key-cell'))) {
+        const row = target.parentElement.parentElement; // Row containing the clicked link
+        const form = target.closest('form');
+        // const form = document.querySelector('.js-auth-dialog-form');
+        if (!form) {
+            console.log('Form not found');
             return;
         }
+        let inputField;
+        let copyText = target.textContent;
 
-        if ((target.id === 'existing-record') && !target.classList.contains(PROCESSED_INPUT_CLASS)) {
-            removeChoiceTable();
-            showLoadingSpinner(); // Rodyti indikatorių
-            chrome.runtime.sendMessage({action: 'checkSession'}, function (response) {
-                // Handle the response from the background script
-                console.log(response);
+        if (target.parentElement.classList.contains('username-cell')) {
+            inputField = form.querySelector('input[data-my-custom-attr="USER_NAME_PASSWORD"], input[type="email"]');
+        } else if (target.parentElement.classList.contains('key-cell')) {
+            copyText = target.dataset.realKey; // Use the real key instead of masked text
+            inputField = form.querySelector('input[data-my-custom-attr="PASSWORD_NAME"], input[type="password"]');
+        }
+        // console.error('Input Field rasta:', inputField);
+
+        if (inputField) {
+            // Copy the text to clipboard
+            navigator.clipboard.writeText(copyText).then(() => {
+                // Temporarily disable events
+                temporarilyDisableEvents(inputField);
+
+                // Paste the text into the input field
+                inputField.focus();
+                inputField.value = copyText;
+
+                // Restore events
+                restoreEvents(inputField);
+
+                // Dispatch an input event to trigger any event listeners
+                const inputEvent = new Event('input', {bubbles: true});
+                inputField.dispatchEvent(inputEvent);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
             });
-
+        } else {
+            console.error('Input field not found.');
+            return;
         }
+        removeTable();
+    }
 
+    function temporarilyDisableEvents(element) {
+        element.addEventListener('input', preventEvent, true);
+        element.addEventListener('change', preventEvent, true);
+    }
 
-        existingTable = document.querySelector(`.${TABLE_IDENTIFIER}`);
+    function restoreEvents(element) {
+        element.removeEventListener('input', preventEvent, true);
+        element.removeEventListener('change', preventEvent, true);
+    }
 
-        if (target.tagName === 'A' && (target.parentElement.classList.contains('username-cell') || target.parentElement.classList.contains('key-cell'))) {
-            const row = target.parentElement.parentElement; // Row containing the clicked link
-            const form = target.closest('form');
-            let inputField;
-            let copyText = target.textContent;
-
-            if (target.parentElement.classList.contains('username-cell')) {
-                inputField = form.querySelector('input[data-my-custom-attr="USER_NAME_PASSWORD"], input[type="email"]');
-            } else if (target.parentElement.classList.contains('key-cell')) {
-                copyText = target.dataset.realKey; // Use the real key instead of masked text
-                inputField = form.querySelector('input[data-my-custom-attr="PASSWORD_NAME"], input[type="password"]');
-            }
-
-            if (inputField) {
-                // Copy the text to clipboard
-                navigator.clipboard.writeText(copyText).then(() => {
-                    // Temporarily disable events
-                    temporarilyDisableEvents(inputField);
-
-                    // Paste the text into the input field
-                    inputField.focus();
-                    inputField.value = copyText;
-
-                    // Restore events
-                    restoreEvents(inputField);
-
-                    // Dispatch an input event to trigger any event listeners
-                    const inputEvent = new Event('input', {bubbles: true});
-                    inputField.dispatchEvent(inputEvent);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            } else {
-                console.error('Input field not found.');
-                return;
-            }
-            removeTable();
-        }
-
-        function temporarilyDisableEvents(element) {
-            element.addEventListener('input', preventEvent, true);
-            element.addEventListener('change', preventEvent, true);
-        }
-
-        function restoreEvents(element) {
-            element.removeEventListener('input', preventEvent, true);
-            element.removeEventListener('change', preventEvent, true);
-        }
-
-        function preventEvent(event) {
-            event.stopImmediatePropagation();
-            event.preventDefault();
-        }
+    function preventEvent(event) {
+        event.stopImmediatePropagation();
+        event.preventDefault();
+    }
 
 // Close table if clicking outside of it
-        if (existingTable && !existingTable.contains(target) && (target.tagName !== 'INPUT' || target.name !== 'USER_NAME_PASSWORD' || target.name !== 'PASSWORD_NAME')) {
-            removeTable();
-            removeAllChanges();
-        }
+    if (existingTable && !existingTable.contains(target) && (target.tagName !== 'INPUT' || target.name !== 'USER_NAME_PASSWORD' || target.name !== 'PASSWORD_NAME')) {
+        removeTable();
+        removeAllChanges();
+    }
 
 
-    });
 });
+// });
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     if (message.action === 'generateTable') {

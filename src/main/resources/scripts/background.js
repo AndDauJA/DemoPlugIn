@@ -99,48 +99,48 @@ function redirectToLoginPage() {
 let isActivated = false; // Pradinė būsena - neaktyvuota
 
 function executeScriptsIfNeeded() {
-    // if (isActivated) { // Jei neaktyvuota, nedaryti nieko
-    if (!isActivated) {
-        // Jei plėtinys neaktyvuotas, nedaryti nieko
-        return;
-    }
-    const scripts = [
-        "scripts/icon.js",
-        "scripts/getwebaddress.js",
-        "scripts/formchoices.js",
-        "scripts/loadtimespinner.js",
-        "scripts/inputForm.js",
-        "scripts/formPlugin.js",
-        "scripts/passwordForm.js",
-        "scripts/logintodb.js",
+    if (isActivated) { // Jei neaktyvuota, nedaryti nieko
+        // if (!isActivated) {
+        //     // Jei plėtinys neaktyvuotas, nedaryti nieko
+        //     return;
+        // }
+        const scripts = [
+            "scripts/icon.js",
+            "scripts/getwebaddress.js",
+            "scripts/formchoices.js",
+            "scripts/loadtimespinner.js",
+            "scripts/inputForm.js",
+            "scripts/formPlugin.js",
+            "scripts/passwordForm.js",
+            "scripts/logintodb.js",
 
-    ];
+        ];
 
-    chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
-        tabs.forEach(tab => {
-            const url = new URL(tab.url);
-            if (url.protocol === 'chrome:' || url.protocol === 'about:') {
-                console.log(`Skipping tab with URL ${tab.url}`);
-                return;
-            }
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            tabs.forEach(tab => {
+                const url = new URL(tab.url);
+                if (url.protocol === 'chrome:' || url.protocol === 'about:') {
+                    console.log(`Skipping tab with URL ${tab.url}`);
+                    return;
+                }
 
-            scripts.forEach(script => {
-                chrome.scripting.executeScript({
-                    target: {tabId: tab.id},
-                    files: [script]
-                }, function (results) {
-                    if (chrome.runtime.lastError) {
-                        console.error('Script injection error:', chrome.runtime.lastError.message);
-                    } else {
-                        console.log(`Injected ${script} into tab ${tab.id}`);
-                    }
+                scripts.forEach(script => {
+                    chrome.scripting.executeScript({
+                        target: {tabId: tab.id},
+                        files: [script]
+                    }, function (results) {
+                        if (chrome.runtime.lastError) {
+                            console.error('Script injection error:', chrome.runtime.lastError.message);
+                        } else {
+                            console.log(`Injected ${script} into tab ${tab.id}`);
+                        }
+                    });
                 });
             });
         });
-    });
-}
+    }
 
-// }
+}
 
 function reloadActiveTabs() {
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
@@ -706,6 +706,7 @@ function checkSessionAtStart() {
             return false;
         });
 }
+
 
 
 

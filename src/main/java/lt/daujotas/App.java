@@ -1,5 +1,6 @@
 package lt.daujotas;
 
+import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -122,8 +123,69 @@ public class App {
     private static void addRegistryEntry(String extensionId) throws IOException {
         String registryPath = "HKCU\\Software\\Google\\Chrome\\Extensions\\" + extensionId;
         String command = "reg add " + registryPath + " /v update_url /t REG_SZ /d \"\" /f";
-
+        File directoryToDelete = new File("C:\\Program Files\\PasswMngPro");
         ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", command);
         processBuilder.inheritIO().start();
+        showInstallationCompleteMessage();
+//        deleteDirectoryWithForce(directoryToDelete);
     }
+
+    // Method to show the installation complete message
+    private static void showInstallationCompleteMessage() {
+        JOptionPane.showMessageDialog(null, "Installation complete", "Installation", JOptionPane.INFORMATION_MESSAGE);
+    }
+    // Method to recursively delete a directory and its contents
+
+    private static void changeOwnershipAndPermissions(File file) throws IOException, InterruptedException {
+        String takeOwnershipCommand = "takeown /f \"" + file.getAbsolutePath() + "\"";
+        String grantPermissionsCommand = "icacls \"" + file.getAbsolutePath() + "\" /grant %username%:F";
+
+        // Vykdome komandas
+        new ProcessBuilder("cmd.exe", "/c", takeOwnershipCommand).inheritIO().start().waitFor();
+        new ProcessBuilder("cmd.exe", "/c", grantPermissionsCommand).inheritIO().start().waitFor();
+    }
+//    private static void deleteDirectoryWithForce(File directory) {
+//        if (directory.exists()) {
+//            File[] files = directory.listFiles();
+//            if (files != null) {
+//                for (File file : files) {
+//                    if (file.isDirectory()) {
+//                        deleteDirectoryWithForce(file);  // Rekursyviai triname subkatalogus
+//                    } else {
+//                        try {
+//                            // Bandome ištrinti paprastu būdu
+//                            if (!file.delete()) {
+//                                changeOwnershipAndPermissions(file);  // Keičiame failo nuosavybę ir teises
+//                                forceDeleteFile(file);  // Tada bandome priverstinai ištrinti
+//                            }
+//                        } catch (Exception e) {
+//                            System.out.println("Klaida trinant failą: " + file.getAbsolutePath() + " - " + e.getMessage());
+//                        }
+//                    }
+//                }
+//            }
+//            // Triname patį katalogą
+//            try {
+//                if (!directory.delete()) {
+//                    changeOwnershipAndPermissions(directory);  // Keičiame katalogo nuosavybę ir teises
+//                    forceDeleteFile(directory);  // Tada bandome priverstinai ištrinti
+//                } else {
+//                    System.out.println("Katalogas ištrintas sėkmingai: " + directory.getAbsolutePath());
+//                }
+//            } catch (Exception e) {
+//                System.out.println("Nepavyko ištrinti katalogo: " + directory.getAbsolutePath() + " - " + e.getMessage());
+//            }
+//        } else {
+//            System.out.println("Katalogas nerastas: " + directory.getAbsolutePath());
+//        }
+//    }
+//
+//
+//    // Komanda, kuri priverstinai ištrina failus „Windows“ sistemoje
+//    private static void forceDeleteFile(File file) throws IOException, InterruptedException {
+//        String command = "cmd.exe /c del /f /q \"" + file.getAbsolutePath() + "\"";
+//        ProcessBuilder processBuilder = new ProcessBuilder("cmd.exe", "/c", command);
+//        processBuilder.inheritIO().start().waitFor();
+//        System.out.println("Failas ištrintas priverstinai: " + file.getAbsolutePath());
+//    }
 }
